@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Releves index{% endblock %}
+
+{% block body %}
+    <h1>Releves index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Brut</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for relefe in releves %}
+            <tr>
+                <td>{{ relefe.id }}</td>
+                <td>{{ relefe.date ? relefe.date|date('Y-m-d') : '' }}</td>
+                <td>{{ relefe.brut }}</td>
+                <td>
+                    <a href="{{ path('app_releves_show', {'id': relefe.id}) }}">show</a>
+                    <a href="{{ path('app_releves_edit', {'id': relefe.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_releves_new') }}">Create new</a>
+{% endblock %}
