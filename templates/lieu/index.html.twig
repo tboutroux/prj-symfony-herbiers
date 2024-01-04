@@ -1,35 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Lieu index{% endblock %}
+{% block title %}Les lieux{% endblock %}
 
 {% block body %}
-    <h1>Lieu index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for lieu in lieus %}
-            <tr>
-                <td>{{ lieu.id }}</td>
-                <td>{{ lieu.nom }}</td>
-                <td>
-                    <a href="{{ path('app_lieu_show', {'id': lieu.id}) }}">show</a>
-                    <a href="{{ path('app_lieu_edit', {'id': lieu.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="container">
+    
+        <h2>Liste des lieux</h2>
 
-    <a href="{{ path('app_lieu_new') }}">Create new</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for lieu in lieus %}
+                <tr>
+                    <td>{{ lieu.id }}</td>
+                    <td>{{ lieu.nom }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{{ path('app_lieu_edit', {'id': lieu.id}) }}">Modifier</a>
+                        <a class="btn btn-danger" href="{{ path('app_lieu_delete', {'id': lieu.id}) }}">Supprimer</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">Aucun lieu inséré</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="add-lieu">
+        
+            <h2>Ajouter un lieu</h2>
+
+            {{ include('lieu/_form.html.twig') }}
+
+        </div>
+
+        {# Bouton qui retrourne à l'accueil #}
+        <a class="btn btn-primary" href="{{ path('app_home') }}">Retour à l'accueil</a>
+
+    </div>
 {% endblock %}

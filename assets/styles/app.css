@@ -25,3 +25,36 @@ header h1 {
     font-weight: 600;
 }
 
+.add-releve, .update-releve, .delete-releve, .add-lieu, .delete-lieu {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.btn-primary {
+    background-color: #172A3A;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.btn-primary:hover {
+    background-color: #0B1822;
+}
+
+.btn-primary:focus {
+    outline: none;
+    background-color: #0B1822;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+}

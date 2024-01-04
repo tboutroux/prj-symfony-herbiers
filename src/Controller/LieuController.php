@@ -15,15 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class LieuController extends AbstractController
 {
     #[Route('/', name: 'app_lieu_index', methods: ['GET'])]
-    public function index(LieuRepository $lieuRepository): Response
-    {
-        return $this->render('lieu/index.html.twig', [
-            'lieus' => $lieuRepository->findAll(),
-        ]);
-    }
-
-    #[Route('/new', name: 'app_lieu_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function index(LieuRepository $lieuRepository, Request $request, EntityManagerInterface $entityManager): Response
     {
         $lieu = new Lieu();
         $form = $this->createForm(LieuType::class, $lieu);
@@ -36,9 +28,10 @@ class LieuController extends AbstractController
             return $this->redirectToRoute('app_lieu_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('lieu/new.html.twig', [
+        return $this->render('lieu/index.html.twig', [
             'lieu' => $lieu,
             'form' => $form,
+            'lieus' => $lieuRepository->findAll(),
         ]);
     }
 

@@ -1,4 +1,11 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+    {{ form_row(form.date) }}
+    {{ form_row(form.lieu_id) }}
+
+    <a href="{{ path('app_lieu_index') }}">Administrer les lieux</a>
+
+    {{ form_row(form.brut) }}
+    <button class="btn btn-primary">{{ button_label|default('Ajouter') }}</button>
+
 {{ form_end(form) }}

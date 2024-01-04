@@ -3,28 +3,35 @@
 {% block title %}Releves{% endblock %}
 
 {% block body %}
-    <h1>Releves</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ relefe.id }}</td>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td>{{ relefe.date ? relefe.date|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Brut</th>
-                <td>{{ relefe.brut }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="container">
 
-    <a href="{{ path('app_releves_index') }}">back to list</a>
+        <div class="delete-releve">
+            <h1>Releves</h1>
 
-    <a href="{{ path('app_releves_edit', {'id': relefe.id}) }}">edit</a>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ relefe.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date</th>
+                        <td>{{ relefe.date ? relefe.date|date('Y-m-d') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Brut</th>
+                        <td>{{ relefe.brut }}</td>
+                    </tr>
+                </tbody>
+            </table>
 
-    {{ include('releves/_delete_form.html.twig') }}
+            <div class="buttons">
+                <a class="btn btn-primary" href="{{ path('app_home') }}">Retour</a>
+                {{ include('releves/_delete_form.html.twig') }}
+            </div>
+
+        </div>
+
+    </div>
 {% endblock %}

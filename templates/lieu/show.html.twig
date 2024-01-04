@@ -3,24 +3,33 @@
 {% block title %}Lieu{% endblock %}
 
 {% block body %}
-    <h1>Lieu</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ lieu.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ lieu.nom }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="container">
 
-    <a href="{{ path('app_lieu_index') }}">back to list</a>
+        <div class="delete-lieu">
+            <h1>Lieu</h1>
 
-    <a href="{{ path('app_lieu_edit', {'id': lieu.id}) }}">edit</a>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ lieu.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ lieu.nom }}</td>
+                    </tr>
+                </tbody>
+            </table>
 
-    {{ include('lieu/_delete_form.html.twig') }}
+            <div class="buttons">
+                <a class="btn btn-primary" href="{{ path('app_home') }}">Retour</a>
+                {{ include('lieu/_delete_form.html.twig') }}
+            </div>
+
+
+        </div>
+
+    </div>
+
 {% endblock %}

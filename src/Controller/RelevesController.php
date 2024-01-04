@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Releves;
-use App\Form\Releves1Type;
+use App\Form\RelevesType;
 use App\Repository\RelevesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,7 +26,7 @@ class RelevesController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $relefe = new Releves();
-        $form = $this->createForm(Releves1Type::class, $relefe);
+        $form = $this->createForm(RelevesType::class, $relefe);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -53,7 +53,7 @@ class RelevesController extends AbstractController
     #[Route('/{id}/edit', name: 'app_releves_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Releves $relefe, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(Releves1Type::class, $relefe);
+        $form = $this->createForm(RelevesType::class, $relefe);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

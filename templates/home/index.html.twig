@@ -3,14 +3,71 @@
 {% block title %}Herbiers{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
 <div class="container">
 
+    <div class="releves">
     
+        <table class="table table-bordered">
+
+            <tr>
+
+                <th>Date</th>
+                <th>Lieu</td>
+                <th>Relevé Brut</th>
+                <th>Tableau</th>
+                <th>Visualisation</th>
+                <th>Actions</th>
+            
+            </tr>
+
+            {% for releve in releves %}
+
+                <tr>
+                    <td>{{ releve.date|date('d/m/Y') }}</td>
+                    <td>{{ releve.lieuId.nom }}</td>
+                    <td>{{ releve.brut }}</td>
+                    <td>
+
+                        {# Je veux que le brut s'affiche sous la forme d'un tableau de 3x3 #}
+                        {% set brut = releve.brut|split('/') %}
+                        {% set brut = brut|batch(3) %}
+                        <table class="table table-bordered">
+                        {% for ligne in brut %}
+                            <tr>
+                                {% for colonne in ligne %}
+                                    <td>{{ colonne }}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                        </table>
+                    
+                    </td>
+                    
+                    <td>
+                    
+                    </td>
+                    
+                    <td>
+                        <a href="{{ path('app_releves_edit', {'id': releve.id}) }}" class="btn btn-primary">Modifier</a>
+                        <a href="{{ path('app_releves_delete', {'id': releve.id}) }}" class="btn btn-danger">Supprimer</a>
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+    <div class="add-releve">
+
+        <h2>Ajouter un relevé</h2>
+        {{ include('releves/_form.html.twig') }}
+
+    </div>
     
 </div>
+
 {% endblock %}
