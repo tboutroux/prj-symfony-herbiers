@@ -25,7 +25,7 @@ header h1 {
     font-weight: 600;
 }
 
-.add-releve, .update-releve, .delete-releve, .add-lieu, .delete-lieu {
+.add-releve, .update-releve, .delete-releve, .add-lieu, .update-lieu, .delete-lieu {
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;

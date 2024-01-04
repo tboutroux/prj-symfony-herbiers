@@ -17,28 +17,8 @@ class RelevesController extends AbstractController
     #[Route('/', name: 'app_releves_index', methods: ['GET'])]
     public function index(RelevesRepository $relevesRepository): Response
     {
-        return $this->render('releves/index.html.twig', [
+        return $this->render('home/index.html.twig', [
             'releves' => $relevesRepository->findAll(),
-        ]);
-    }
-
-    #[Route('/new', name: 'app_releves_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $relefe = new Releves();
-        $form = $this->createForm(RelevesType::class, $relefe);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($relefe);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('app_releves_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('releves/new.html.twig', [
-            'relefe' => $relefe,
-            'form' => $form,
         ]);
     }
 
@@ -59,7 +39,7 @@ class RelevesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_releves_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('releves/edit.html.twig', [
@@ -76,6 +56,6 @@ class RelevesController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_releves_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
     }
 }

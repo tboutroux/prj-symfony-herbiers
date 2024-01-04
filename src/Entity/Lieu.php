@@ -18,7 +18,7 @@ class Lieu
     #[ORM\Column(length: 50)]
     private ?string $nom = null;
 
-    #[ORM\OneToMany(mappedBy: 'lieu_id', targetEntity: Releves::class)]
+    #[ORM\OneToMany(mappedBy: 'lieu_id', targetEntity: Releves::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
     private Collection $releves;
 
     public function __construct()

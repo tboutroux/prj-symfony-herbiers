@@ -26,7 +26,7 @@
                 <tr>
                     <td>{{ releve.date|date('d/m/Y') }}</td>
                     <td>{{ releve.lieuId.nom }}</td>
-                    <td>{{ releve.brut }}</td>
+                    <td class="brut">{{ releve.brut }}</td>
                     <td>
 
                         {# Je veux que le brut s'affiche sous la forme d'un tableau de 3x3 #}
@@ -44,7 +44,7 @@
                     
                     </td>
                     
-                    <td>
+                    <td class="visualisation">
                     
                     </td>
                     
@@ -70,4 +70,7 @@
     
 </div>
 
+<script src="{{ asset('js/visualisation.js') }}"></script>
+
 {% endblock %}
+
